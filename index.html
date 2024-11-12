@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Buttons -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'amazon-rank')">Amazon Rank Fetcher</button>
+            <button class="tab-button" onclick="openTab(event, 'flipkart-rank')">Flipkart Rank Fetcher</button>
+            <button class="tab-button" onclick="openTab(event, 'amazon-product')">Amazon Product Info</button>
+            <button class="tab-button" onclick="openTab(event, 'flipkart-product')">Flipkart Product Info</button>
+        </div>
+
+        <!-- Amazon Rank Fetcher Tab -->
+        <div id="amazon-rank" class="tab-content active">
+            <div class="input-section">
+                <textarea placeholder="Enter keywords (one per line)"></textarea>
+                <div class="input-row">
+                    <input type="number" min="1" value="30" placeholder="Number of ranks">
+                    <button class="button primary-button" onclick="startScraping('amazon-rank')">Start Scraping</button>
+                    <button class="button export-button" disabled onclick="exportData('amazon-rank')">Export Results</button>
+                </div>
+                <div class="status">Ready to scrape</div>
+            </div>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>ASIN</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Rating</th>
+                            <th>Reviews</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Flipkart Rank Fetcher Tab -->
+        <div id="flipkart-rank" class="tab-content">
+            <div class="input-section">
+                <textarea placeholder="Enter keywords (one per line)"></textarea>
+                <div class="input-row">
+                    <input type="number" min="1" value="30" placeholder="Number of ranks">
+                    <button class="button primary-button" onclick="startScraping('flipkart-rank')">Start Scraping</button>
+                    <button class="button export-button" disabled onclick="exportData('flipkart-rank')">Export Results</button>
+                </div>
+                <div class="status">Ready to scrape</div>
+            </div>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Product ID</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Rating</th>
+                            <th>Reviews</th>
+                            <th>Sponsored</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Amazon Product Info Tab -->
+        <div id="amazon-product" class="tab-content">
+            <div class="input-section">
+                <textarea placeholder="Enter Amazon product URLs or ASINs (one per line)"></textarea>
+                <div class="input-row">
+                    <button class="button primary-button" onclick="startScraping('amazon-product')">Start Scraping</button>
+                    <button class="button export-button" disabled onclick="exportData('amazon-product')">Export Results</button>
+                </div>
+                <div class="status">Ready to scrape</div>
+            </div>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>ASIN</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Rating</th>
+                            <th>Reviews</th>
+                            <th>BestSeller</th>
+                            <th>In Stock</th>
+                            <th>Bought Last Month</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Flipkart Product Info Tab -->
+        <div id="flipkart-product" class="tab-content">
+            <div class="input-section">
+                <textarea placeholder="Enter Flipkart product URLs (one per line)"></textarea>
+                <div class="input-row">
+                    <button class="button primary-button" onclick="startScraping('flipkart-product')">Start Scraping</button>
+                    <button class="button export-button" disabled onclick="exportData('flipkart-product')">Export Results</button>
+                </div>
+                <div class="status">Ready to scrape</div>
+            </div>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Rating</th>
+                            <th>Reviews</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
